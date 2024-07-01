@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-0+bdvnpfbs=m+c+f!=r54q*p_^ee+n%cpl!s#2y^!&258cazz3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -78,9 +78,10 @@ import os
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL', 'postgres://user:password@localhost:5432/mydatabase')
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 ALLOWED_HOSTS = ['*']
 
